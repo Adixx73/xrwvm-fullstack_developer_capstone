@@ -17,7 +17,7 @@ const PostReview = () => {
   let root_url = curr_url.substring(0,curr_url.indexOf("postreview"));
   let params = useParams();
   let id =params.id;
-  let dealer_url = root_url+`djangoapp/dealer/${id}`;
+  let dealer_url = root_url+`djangoapp/dealer/${id}/`;
   let review_url = root_url+`djangoapp/add_review`;
   let carmodels_url = root_url+`djangoapp/get_cars`;
 
@@ -58,7 +58,7 @@ const PostReview = () => {
 
   const json = await res.json();
   if (json.status === 200) {
-      window.location.href = window.location.origin+"/dealer/"+id;
+      window.location.href = window.location.origin+"/dealer/"+id+"/";
   }
 
   }
@@ -69,9 +69,7 @@ const PostReview = () => {
     const retobj = await res.json();
     
     if(retobj.status === 200) {
-      let dealerobjs = Array.from(retobj.dealer)
-      if(dealerobjs.length > 0)
-        setDealer(dealerobjs[0])
+      setDealer(retobj.dealer);
     }
   }
 
