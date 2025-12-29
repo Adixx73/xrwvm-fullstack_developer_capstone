@@ -19,7 +19,6 @@ def initiate():
             )
         )
 
-
     car_model_data = [
         {
             "name": "Pathfinder",
